@@ -1,0 +1,309 @@
+AlgorithmenundProgrammierung2
+ Praktikum2-VererbungundPolymorphie
+ 1 Vererbung
+
+ In dieser Aufgabe müssen Sie anhand einer Klassenstruktur Gemeinsamkeiten und Unterschiede
+ erkennen, und daraus Ober- und Unterklassen bilden. Bei dem Fallbeispiel handelt es sich Tiere.
+ Das ist die Klassenstruktur:
+ Cat
+ species: String
+ age: Int
+ owner: String
+ name: String
+ makeSound(): String
+ scratchFurniture(): String
+
+ Pet
+ species: String
+ age: Int
+ owner: String
+ name: String
+ makeSound(): String
+
+
+ Animal
+species: String
+ age: Int
+ makeSound(): String
+
+ Parrot
+ species: String
+ age: Int
+ nocturnal: Boolean
+ knownWords: List<String>
+ makeSound(): String
+
+ Dog
+ species: String
+ age: Int
+ owner: String
+ name: String
+ wagsTail: Boolean
+ makeSound(): String
+ fetchToy(): String
+
+Bird
+ species: String
+ age: Int
+ nocturnal: Boolean
+ makeSound(): String
+
+ Owl
+ species: String
+ age: Int
+ nocturnal: Boolean
+ prey: List<String>
+ makeSound(): String
+ flySilently(): String
+ hunts(): String
+
+ Und das der dazugehörige Code:
+ Parrot
+ species: String
+ age: Int
+ nocturnal: Boolean
+ knownWords: List<String>
+ makeSound(): String
+ Bird
+ species: String
+ age: Int
+ nocturnal: Boolean
+ makeSound(): String
+ class Animal(val species: String, val age: Int) {
+ fun makeSound(): String {
+ TODO()
+ }
+ }
+ class Pet(
+ val species: String,
+ val age: Int,
+ val owner: String,
+ val name: String
+ ) {
+ fun makeSound(): String {
+ TODO()
+ }
+ }
+ class Cat(
+ val species: String,
+ val age: Int,
+ val owner: String,
+ val name: String
+ ) {
+ fun makeSound(): String {
+ TODO()
+ }
+ fun scratchFurniture(): String {
+ TODO()
+ }
+ }
+ class Dog(
+ val species: String,
+ val age: Int,
+ val owner: String,
+ val name: String,
+ val wagsTail: Boolean
+ ) {
+ fun makeSound(): String {
+ TODO()
+ }
+ fun fetchToy(): String {
+ TODO()
+ }
+ }
+ class Bird(
+ val species: String,
+ val age: Int,
+ val nocturnal: Boolean
+ ) {
+ fun makeSound(): String {
+ TODO()
+ }
+ }
+ class Parrot(
+ val species: String,
+ val age: Int,
+ val nocturnal: Boolean = false,
+ val knownWords: List<String>
+ ) {
+ 12. Mai 2023
+ Seite 4
+ fun makeSound(): String {
+ TODO()
+ }
+ }
+ class Owl(
+ val species: String,
+ val age: Int,
+ val nocturnal: Boolean = true,
+ val prey: List<String>
+ ) {
+ fun makeSound(): String {
+ TODO()
+ }
+ fun flySilently(): String {
+ TODO()
+ }
+ fun hunts(): String {
+ TODO()
+ }
+ }
+ Ein paar Hinweise zu den Eigenschaften:
+ • species: String => Name der Tierart.
+ • age: Int => Alter des Tiers.
+ • owner: String => Besitzer des Tiers.
+ • name: String => Rufname des Tiers.
+ • wagsTail: Boolean => Gibt an, ob ein Tier mit dem Schwanz wedelt.
+ • nocturnal: Boolean => Gibt an, ob ein Tier nachtaktiv ist.
+ • knownWords: List<String> => Gibt an, welche Worte das Tier kennt.
+ • prey: List<String> => Gibt eine Liste der Beute des Tiers an.
+ 1.1 Struktur konzeptionieren
+
+ Betrachten Sie die dargestellte Klassenstruktur und den dazughehörigen Code. Machen Sie sich
+ zu den folgenden Punkten der Vererbung Gedanken:
+ • Wasist die Oberklasse? Überlegen Sie, wo die Keywords abstract oder open Sinn machen.
+ • Was sind die Unterklassen?
+ • Welche Eigenschaften und Methoden gehören in die Oberklassen, weil diese allgemein
+ sind?
+ • Welche Eigenschaften und Methoden gehören in die Unterklassen, weil diese spefizisch
+ sind?
+ • Welche Eigenschaften und Methoden müssten von welcher Unterklasse überschrieben /
+ erweitert werden?
+ 1.2 Struktur implementieren
+ Setzen Sie die Vererbung um, indem Sie die Klassen in Beziehung setzen. Die fehlenden Me
+thoden implementieren Sie erst in der nächsten Teilaufgabe.
+ 1.3 Methoden implementieren
+ Implementieren Sie jetzt die folgenden Methoden. Überlegen Sie, welche Methoden überschrieben
+ oder ergänzt werden sollen:
+ • makeSound => Gibt zurück, welches Geräusch das Tier macht. Das Geräusch ist abhängig
+ von dem Tier:– Ein Haustier Pet hat einen Rufnamen. Hier wird z.B.: “Emma sagt etwas” zurück
+gegeben.– Eine Katze Cat sagt Miau. Hier wird z.B.: “Lucy sagt etwas. Miau” zurückgegeben.– Ein Hund Dog sagt Wuff. HIer wird z.B.: “Emma sagt etwas. Wuff” zurückgegeben.– Ein Vogel Bird singt. Hier wird z.B.: “Amsel zwitschert oder singt” zurückgegeben.– Ein Papagei Parrot ahmt Wörter nach. Hier wird z.B.: “Papagei ahmt Wörter nach:
+ Hallo, Essen, Müde” zurückgegeben. Hinweis: Hier soll auf knownWords zugegriffen
+ werden. Nutzen Sie dazu z.B. die Funktion joinToString von Kotlin.
+ • scratchFurniture => Gibt zurück, dass die Katze an den Möbeln kratzt. Greifen Sie auf
+ die Parameter der Klasse zu.
+ • fetchToy => Gibt zurück, dass der Hund das Spielzeug zurück bringt. Der String soll
+ zusätzlich beinhalten, ob der Hund sich dabei freut oder nicht. Das ist abhängig davon,
+ ob wagsTail true oder false ist.
+ • flySilently => Gibt zurück, dass die Eule lautlos fliegt. Greifen Sie auf die Parameter
+ der Klasse zu.
+ • hunt => Gibt zurück, dass die Eule lautlos fliegt und welche Beute sie jagt. Hinweis: Hier
+ soll auf prey zugegriffen werden. Nutzen Sie dazu z.B. die Funktion joinToString von
+ Kotlin.
+ 1.4 Implementierung testen
+
+ Schreiben Sie eine main Funktion, in der Sie unterschiedliche Tiere erzeugen und die jeweiligen
+ Methoden aufrufen. Hier ein paar Beispiele:
+ fun main() {
+ val dog = Dog("Golden Retriever", 6, "Anja", "Emma", true)
+ val cat = Cat("Britisch Kurzhaar", 0, "Sascha", "Lucy")
+ val bird = Bird("Amsel", 0, false)
+ val owl = Owl("Eule", 5, true, listOf("Maus", "Maulwurf"))
+ val parrot = Parrot("Blaupapagei", 0, false, listOf("Hallo", "Guten
+ Tag", "Ich mag Pizza", "Tschüß"))
+ println(parrot.makeSound()) // Blaupapagei ahmt Wörter nach: Hallo,
+ Guten Tag, Ich mag Pizza, Tschüß
+ println(cat.scratchFurniture()) // Lucy kratzt an den Möbeln und
+ sagt Lucy sagt etwas: Miau!
+ println(dog.fetchToy()) // Emma bringt das Spielzeug zurück und
+ freut sich!
+ println(owl.flySilently()) // Eule fliegt lautlos
+ println(owl.hunts()) // Eule fliegt lautlos und jagt Maus, Maulwurf
+ }
+ In den Kommentaren steht jeweils das, was durch println auf der Konsole ausgegeben wird.
+ Stellen Sie sicher, dass Sie ähnliche Ergebnisse haben.
+ 
+2 Interface
+
+ In dieser Aufgabe soll eine Patenschaft (Adoption) als Interface eingeführt werden.
+ 2.1 Patenschaften implementieren
+ Definieren Sie das folgende Interface Adoption für eine Patenschaft:
+ interface Adoption {
+ val days: Int
+ val price: Double
+ val benefits: List<String>
+ }
+ Die Tage days stehen für die Laufzeit der Patenschaft. Der Preis price stellt die Kosten der
+ Patenschaft dar. benefits beschreibt die Vorteile, die die Patenschaft beinhaltet.
+ Implementieren Sie jetzt zwei unterschiedlichen Arten von Patenschaften:
+ • Limitierte Patenschaft (LimitedAdoption): Die Klasse LimitedAdoption nimmt eine Anzahl
+ von Tagen entgegen. Der Preis beträgt 5e pro Tag. Diese Art der Patenschaft hat immer
+ die gleichen Vorteile: Besuchen und Füttern des Tiers.
+ • Unlimitierte Patenschaft (UnlimitedAdoption): Die Klasse UnlimitedAdoption nimmt den
+ Namen der Person entgegen, die die Patenschaft abschließt. Die Anzahl der Tage ist
+ unbegrenzt. Nutzen Sie hierfür Int.MAX_VALUE. Der Preis beträgt immer 1000e. Diese
+ Art der Patenschaft hat immer die gleichen Vorteile: Besuchen, Füttern und Streicheln
+ der Tiere sowie eine Gedenktafel mit dem Namen der Person am Gehege.
+ 2.2 Tiere um Patenschaften erweitern
+ Jedes Tier soll zusätzlich eine Liste von Patenschaften haben. Passen Sie den Code entsprechend
+ an. Machen Sie sich hierfür die Vererbungshierarchie zunutze. Fügen Sie auch eine Methode
+ addAdoption hinzu, die ein Objekt vom Typ Adoption akzeptiert und dieses der Liste hinzufügt.
+ 2.3 Implementierung testen
+ Erzeugen Sie ein paar Patenschaften in der main Funktion. Fügen Sie diese einigen Tieren hinzu.
+ Beispiel:
+ fun main() {
+ val dog = Dog("Golden Retriever", 6, "Anja", "Emma", true)
+ dog.addAdoption(UnlimitedAdoption("Sandy"))
+ val cat = Cat("Britisch Kurzhaar", 0, "Sascha", "Lucy")
+ cat.addAdoption(LimitedAdoption(60))
+ cat.addAdoption(UnlimitedAdoption("Sandy"))
+    val parrot = Parrot("Blaupapagei", 0, false, listOf("Hallo", "Guten
+ Tag", "Ich mag Pizza", "Tschüß"))
+ parrot.addAdoption(UnlimitedAdoption("Mario"))
+ }
+
+ 3 Polymorphie
+
+ In dieser Aufgabe soll ein Tierpark simuliert werden.
+ 3.1 Tierpark implementieren
+
+ Definieren Sie eine Klasse namens Zoo, die eine veränderliche Liste von Tieren als Eigenschaft
+ hat.
+ 3.2 Begriffsdefinition
+ Wasbedeutet es, wenn etwas polymorph ist? Beziehen Sie sich z.B. auf die addAdoption Methode
+ aus der Aufgabe 2.2 oder auf die Liste von Tieren.
+ 3.3 Methoden implementieren
+ Implementieren Sie die folgenden Methoden in der Klasse Zoo. Überlegen Sie sich, was der
+ jeweilige Rückgabetyp ist:
+ • add(animal: Animal) => Fügt das übergebene Tier der Liste von Tieren hinzu.
+ • remove(animal: Animal) => Entfernt das übergebene Tier aus Liste von Tieren.
+ • getTotalAdoptionMoney() => Gibt die Menge des Geldes zurück, das insgesamt über
+ Patenschaften gewonnen wird.
+ • getBirdsInZoo() => Gibt eine Liste mit allen Vögeln im Tierpark zurück.
+ • getUnlimitedAdopters() => Gibt zurück, wie alle Personen heißen, die eine unlimitierte
+ Patenschaft abgeschlossen haben.
+ • getNumberOfGreetingParrots(words: List<String>) => Gibt zurück, wie viele Papageien
+ jemanden begrüßen können. Dazu soll eine Liste mit Begrüßungen als Parameter überge
+ben werden (z.B. “Hallo”, “Moin”, “Hi”). Ein Papagei kann jemanden begrüßen, wenn min.
+ eine der Begrüßungen in seinen knownWords enthalten ist.
+ • getBabies() => Gibt alle Tierbabies zurück, die sich im Park befinden. Als Baby gilt ein
+ Tier, wenn es unter 1 Jahr alt ist.
+ 3.4 Implementierung testen
+ Erzeugen Sie in der main Funktion ein Objekt vom Typ Zoo und fügen Sie diesem verschiedene
+ Tiere hinzu. Rufen Sie die in der Aufgabe 3.3 implementierten Methoden auf. Hier ein Beispiel:
+ fun main() {
+ val bird = Bird("Amsel", 0, false)
+ val owl = Owl("Eule", 5, true, listOf("Maus", "Maulwurf"))
+ val dog = Dog("Golden Retriever", 6, "Anja", "Emma", true)
+ dog.addAdoption(UnlimitedAdoption("Sandy"))
+ val cat = Cat("Britisch Kurzhaar", 0, "Sascha", "Lucy")
+ cat.addAdoption(LimitedAdoption(60))
+ cat.addAdoption(UnlimitedAdoption("Sandy"))
+
+ val parrot = Parrot("Blaupapagei", 0, false, listOf("Hallo", "Guten
+ Tag", "Ich mag Pizza", "Tschüß"))
+ parrot.addAdoption(UnlimitedAdoption("Mario"))
+ val zoo = Zoo()
+ zoo.addAnimal(dog)
+ zoo.addAnimal(cat)
+ zoo.addAnimal(bird)
+ zoo.addAnimal(owl)
+ zoo.addAnimal(parrot)
+ println(zoo.getTotalAdoptionMoney()) // 3300
+ println(zoo.getBirdsInZoo()) // Bird, Owl, Parrot
+ println(zoo.getUnlimitedAdopters()) // Sandy. Mario
+ println(zoo.getNumberOfGreetingParrots(listOf("Hallo", "Guten
+ Tag"))) // 1
+ println(zoo.getBabies()) //Cat, Bird, Parrot
+ }
+ Stellen Sie sicher, dass Sie in etwa die gleichen Ergebnisse bekommen
